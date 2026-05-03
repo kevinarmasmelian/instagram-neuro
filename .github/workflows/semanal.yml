@@ -1,13 +1,11 @@
-name: Generador Semanal Instagram
+name: Generador Instagram
 
 on:
-  schedule:
-    - cron: '0 8 * * 1'
   workflow_dispatch:
     inputs:
       tema:
         description: 'Tema de búsqueda en PubMed (en inglés)'
-        required: false
+        required: true
         default: ''
 
 jobs:
