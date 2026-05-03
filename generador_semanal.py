@@ -50,7 +50,7 @@ else:
     semana_del_año = datetime.now().isocalendar()[1]
     TEMA = TEMAS[semana_del_año % len(TEMAS)]
     print(f"🗓️  Semana {semana_del_año} — Tema automático: {TEMA}")
-print(f"🗓️  Semana {semana_del_año} — Tema: {TEMA}")
+
 
 
 # ─────────────────────────────────────────────
