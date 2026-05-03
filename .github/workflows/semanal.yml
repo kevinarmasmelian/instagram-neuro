@@ -1,0 +1,25 @@
+name: Generador Semanal Instagram
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+jobs:
+  generar-contenido:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar librerías
+        run: pip install groq requests resend
+      - name: Generar y enviar contenido
+        env:
+          GROQ_API_KEY:   ${{ secrets.GROQ_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_DESTINO:  kevinarmasmelian@gmail.com
+        run: python generador_semanal.py
