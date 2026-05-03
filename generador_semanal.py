@@ -41,9 +41,15 @@ TEMAS = [
 
 # Seleccionar tema según la semana del año (rota automáticamente)
 from datetime import datetime
-semana_del_año = datetime.now().isocalendar()[1]
-TEMA = TEMAS[semana_del_año % len(TEMAS)]
+TEMA_MANUAL = os.environ.get("TEMA_MANUAL", "").strip()
 
+if TEMA_MANUAL:
+    TEMA = TEMA_MANUAL
+    print(f"✏️  Tema elegido manualmente: {TEMA}")
+else:
+    semana_del_año = datetime.now().isocalendar()[1]
+    TEMA = TEMAS[semana_del_año % len(TEMAS)]
+    print(f"🗓️  Semana {semana_del_año} — Tema automático: {TEMA}")
 print(f"🗓️  Semana {semana_del_año} — Tema: {TEMA}")
 
 
